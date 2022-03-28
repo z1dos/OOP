@@ -244,12 +244,14 @@ a{
 
 .forAllAppliInmain{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction:row;
+    flex-wrap:wrap-reverse;
 }
 
 .forAllImg{
     width: 400px;
     height: 300px;
+    border-radius:1em;
 }
 
 .forApplicationsAll{

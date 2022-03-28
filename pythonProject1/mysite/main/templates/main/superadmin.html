@@ -2,16 +2,6 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-   <div class="checkDown">
-<div class="countCheck">
-    <div class="countCheckEL">
-    Количество заявок в статусе "Принято в работу"
-    </div>
-</div>
-<div class="countCheckNumb">
-    <div class="countCheckELTwo">
-    {{ count }}
-    </div>
    <div class="lastFourApli">Последние выполненные заявки</div>
    {% for post in bb %}
    <div class="forAllAppliInmain">
@@ -22,9 +12,9 @@
    <div div class="forApplicationsAllETitle1">Описание: {{post.description}}</div>
    <div div class="forApplicationsAllETitle1">Категория: {{post.category}}</div>
    <div div class="forApplicationsAllETitle1">Изображение:</div>
+   <div div class="forApplicationsAllETitle1">Статус: {{post.status}}</div>
 
    <div class="forApplicationsAllETitle1"><img class="forAllImg" src="{{MEDIA_URL}}{{ post.image.url }}" alt="Изображение"></div>
    </div>
-
    {% endfor %}
 {% endblock %}

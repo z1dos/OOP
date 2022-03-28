@@ -32,6 +32,30 @@ def profile_bb_delete(request, pk):
        return render(request, 'main/profile_bb_delete.html', context)
 
 
+def superAdmin(request):
+    bbs = Bb.objects.all().order_by('-created')
+    count = Bb.objects.filter(status='Принято в работу').count()
+    context = {'bb': bbs, 'count': count}
+    return render(request, 'main/superadmin.html', context)
+
+# @login_required
+# def profile_bb_change(request, pk):
+#    bb = get_object_or_404(Bb, pk=pk)
+#    if request.method == 'POST':
+#        form = BbAdminForm(request.POST, request.FILES, instance=bb)
+#        if form.is_valid():
+#            bb = form.save()
+#            formset = AIFormSet(request.POST, request.FILES, instance=bb)
+#            if formset.is_valid():
+#                formset.save()
+#                messages.add_message(request, messages.SUCCESS,
+#                                     'Объявление изменено')
+#                return redirect('main:profile')
+#    else:
+#        form = BbAdminForm(instance=bb)
+#        formset = AIFormSet(instance=bb)
+#    context = {'form': form, 'formset': formset}
+
 def index(request):
    bbs = Bb.objects.filter(status='Выполнено').order_by('-created')
    count = Bb.objects.filter(status='Принято в работу').count()
