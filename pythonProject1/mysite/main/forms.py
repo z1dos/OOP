@@ -53,10 +53,10 @@ class BbAdminForm(forms.ModelForm):
     def clean(self):
        status = self.cleaned_data['status']
        if (self.instance.status != status) and status == 'Новая':
-           raise ValidationError("Вы не можете поменять статус")
+           raise ValidationError("Вы не можете поменять статус на новая")
        if (self.instance.status == 'Выполнено'):
-           raise ValidationError("Вы не можете поменять статус")
+           raise ValidationError("Вы не можете поменять статус с Выполнено")
        if (self.instance.status == 'Принято в работу'):
-           raise ValidationError("Вы не можете поменять статус")
+           raise ValidationError("Вы не можете поменять статус с Принято в работу")
 
 
