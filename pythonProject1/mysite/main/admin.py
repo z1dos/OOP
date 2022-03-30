@@ -17,14 +17,17 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class BbAdmin(admin.ModelAdmin):
- #  def clean(self):
-   #   if not self.status == 'Новая':
-     #    fields = ('author', 'title', 'description', 'category', 'image')
    list_display = ('author', 'title', 'description', 'category', 'image', 'status', 'created')
    fields = ('author', 'status', 'title', 'description', 'category', 'image')
    inlines = (AdditionalImageInline, AddCommentaryComInLine)
    list_filter = ('status', 'category')
    form = BbAdminForm
+   # class Meta:
+   #    model = Bb
+   #    if (Bb.status == 'Выполнено'):
+   #       fields = ('author', 'status', 'title', 'description', 'category', 'image')
+   #       inlines = (AdditionalImageInline, AddCommentaryComInLine)
+
 
 admin.site.register(Bb, BbAdmin)
 
